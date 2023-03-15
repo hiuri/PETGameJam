@@ -1,6 +1,6 @@
 import Phaser from './lib/phaser.js'
 
-import Scene_center from 'scenes/map1_center/Scene_center.js'
+import Scene_center from './scenes/map1_center/Scene_center.js'
 
 export default new Phaser.Game({
     type: Phaser.AUTO,
