@@ -6,13 +6,22 @@ export default class Scene_up extends Phaser.Scene{
         super('scene_up');
     }
 
+    init(){
+      this.velocityJorge = 1;
+      this.velocityFire = 4;
+      this.lifes = 1;
+      this.fireGroup = this.physics.add.group();
+      this.lastSpawned = 0;
+      this.spawnCooldown = 2000;
+    }
+
     preload(){
         this.load.image("background", "./src/scenes/map2_up/img/map_up.jpg");
         this.load.spritesheet("dragon", "./src/scenes/map2_up/img/dragon.png",{
             frameWidth: 191,
             frameHeight: 161,
         });
-
+        //explosion
         this.load.spritesheet("dragondead", "./src/scenes/map2_up/img/explosion.png",{
             frameWidth:64,
             frameHeight:64,
@@ -24,8 +33,9 @@ export default class Scene_up extends Phaser.Scene{
     }
     
     create(){
+
     
-        // adicionando o background
+        //adicionando o background
         this.background = this.add.tileSprite(400,300,800,600,"background");
 
         //adicionando o dragao no mapa
@@ -33,10 +43,10 @@ export default class Scene_up extends Phaser.Scene{
         this.dragons = this.physics.add.group()
         this.dragons.create(
             380,100, "dragon"
-        ).setScale(1)
+        ).setScale(0.5)
         this.dragons.create(
             380,100, "dragondead"
-        ).setScale(2.5)
+        ).setScale(1.2)
         
 
         this.anims.create({
@@ -54,18 +64,13 @@ export default class Scene_up extends Phaser.Scene{
         });
 
 
-        this.dragons.children.iterate((dragondead)=>{
-            dragondead.play("dragon_dead")
+        this.dragons.children.iterate((dragon)=>{
+            dragon.play("dragon_idle")
         })
 
 
-        //
-
         //adicionando fogo no mapa
-        this.fires = this.physics.add.group()
-        this.fires.create(
-            380,170, "fire"
-        ).setScale(1)
+      
 
         this.anims.create({
             key: "fire_idle",
@@ -74,60 +79,44 @@ export default class Scene_up extends Phaser.Scene{
             repeat:-1
         });
 
-        this.fires.children.iterate((dragon)=>{
-            dragon.play("fire_idle")
-        })
 
+
+        this.lifesText = this.add.text(10,40, `Vidas: ${this.lifes}`,{
+          fontSize: 20,
+          color: "#fff",
+        });
+
+        
     }
     
     update(){
-    
+      // adicionando as bolas de fogo
+      if (this.time.now > this.lastSpawned) {
+        this.createFire();
+        this.lastSpawned = this.time.now + this.spawnCooldown;
+      }
     }
 
-
-    //Movimentacao Jorge 
-    /*
-    move() {
-        if (this.keys.left.isDown && this.ship.x > this.shipWidth / 2) {
-          this.ship.setVelocityX(-200);
-        } else if (
-          this.keys.right.isDown &&
-          this.ship.x < this.scale.width - this.shipWidth / 2
-        ) {
-          this.ship.setVelocityX(200);
-        } else {
-          this.ship.setVelocityX(0);
-        }
-    
-        if (this.keys.up.isDown && this.ship.y > this.shipHeight / 2) {
-          this.ship.setVelocityY(-200);
-        } else if (
-          this.keys.down.isDown &&
-          this.ship.y < this.scale.height - this.shipHeight / 2
-        ) {
-          this.ship.setVelocityY(200);
-        } else {
-          this.ship.setVelocityY(0);
-        }
-      }
-
-      */
-      /*
-      createFire() {
-        this.fireGroup.create(
-          Phaser.Math.Between(0.05 * this.scale.width, 0.95 * this.scale.width),
-          -40,
-          "fire"
-        );
-        this.alienGroup.children.iterate((child) => {
-          child.setScale(0.1);
-          child.play("fire");
-          child.setVelocityY(100);
-        });
-    
-        // removendo os inimigos que passaram para fora da tela e não foram mortos
-        this.alienGroup.children.iterate((child) => {
-          if (child && child.body.y > this.scale.height) child.destroy();
-        });
-      }*/
+    updateLife(){
+      
+    }
+  
+    createFire() {
+      this.fireGroup.create(
+        Phaser.Math.Between(0.3 * this.scale.width, 0.6 * this.scale.width),
+        130,
+        "fire"
+      );
+      this.fireGroup.children.iterate((child) => {
+        child.setScale(0.8);
+        child.play("fire_idle");
+        child.setVelocityY(100);
+      });
+  
+      // removendo os inimigos que passaram para fora da tela e não foram mortos
+      this.fireGroup.children.iterate((child) => {
+        if (child && child.body.y > this.scale.height) child.destroy();
+      });
+    }
+  
 }
