@@ -23,7 +23,7 @@ export default class Scene_up extends Phaser.Scene{
         this.dragons = this.physics.add.group()
         this.dragons.create(
             400,100, "dragon"
-        ).setScale(0.3)
+        ).setScale(0.8)
 
         this.anims.create({
             key: "dragon_idle",
@@ -32,7 +32,9 @@ export default class Scene_up extends Phaser.Scene{
             repeat:-1
         });
 
-        this.dragons.children.iterate((dragon)=>{dragon.play("dragon_idle")})
+        this.dragons.children.iterate((dragon)=>{
+            dragon.play("dragon_idle")
+        })
     }
     
     update(){
