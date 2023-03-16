@@ -13,7 +13,9 @@ export default class Scene_left extends Phaser.Scene{
         this.jorgeHeight = 64;
         this.horsePosX = 100;
         this.horsePosY = 300;
-        this.horseDirY = true;//true é up, false é down
+        this.horseDirY = 0;//0 é up, 1 é down
+        this.horseVel = 75
+        this.horseD = 0;
     }
 
     preload(){
@@ -50,35 +52,104 @@ export default class Scene_left extends Phaser.Scene{
             //this.horsew.setVelocityY(15)
         });
 
-        this.horsew.children.iterate((horse)=>{
-            horse.play("horse-mov-up")
-        });
-        //this.horsew.setVelocityY(-50)
     }
 
     update(){
-        if(this.horseDirY == true){
-            if(this.horsePosY >= 20){
-                this.horsew.setVelocityY(-50);
+//algoritimo para deixar o cavalo subindo e descendo
+/*if(this.horseDirY == 0){
+    if(this.horsePosY >= 20){
+        this.horsew.setVelocityY(-50);
+        this.horsePosY = this.horsePosY - 1;
+    }
+    else{
+        this.horsew.setVelocityY(50);
+        this.horseDirY = 1;
+        horse.play("horse-mov-down");
+    }
+}
+else if(this.horseDirY == 1){
+    if(this.horsePosY <= 580){
+        this.horsew.setVelocityY(50);
+        this.horsePosY = this.horsePosY + 1;
+    }
+    else{
+        this.horsew.se1if(this.horsePosY <= 550){
+                this.horsew.setVelocityY(this.horseVel);
+                this.horsePosY = this.horsePosY + 1;
+            }tVelocityY(-50);
+        this.horseDirY = 0;
+        horse.play("horse-mov-up");
+    }
+}        /*
+//algoritimo para deixar o cavalo subindo e descendo
+/*if(this.horseDirY == 0){
+    if(this.horsePosY >= 20){
+        this.horsew.setVelocityY(-50);
+        this.horsePosY = this.horsePosY - 1;
+    }
+    else{
+        this.horsew.setVelocityY(50);
+        this.horseDirY = 1;
+        horse.play("horse-mov-down");
+    }
+}
+else if(this.horseDirY == 1){
+    if(this.horsePosY <= 580){
+        this.horsew.setVelocityY(50);
+        this.horsePosY = this.horsePosY + 1;
+    }
+    else{
+        this.horsew.se1if(this.horsePosY <= 550){
+                this.horsew.setVelocityY(this.horseVel);
+                this.horsePosY = this.horsePosY + 1;
+            }tVelocityY(-50);
+        this.horseDirY = 0;
+        horse.play("horse-mov-up");
+    }
+}        //horse.play("horse-mov-up");
+        if(this.horseDirY == 0){
+            //horse.play("horse-mov-up");
+            if(this.horsePosY >= 50){
+                this.horsew.setVelocityY(-this.horseVel);
                 this.horsePosY = this.horsePosY - 1;
             }
             else{
-                this.horsew.setVelocityY(50);
-                this.horseDirY = false;
-                horse.play("horse-mov-down");
+                this.horsew.setVelocityY(this.horseVel);
+                this.horseDirY = 1;
+                //horse.play("horse-mov-down");
             }
         }
-        else if(this.horseDirY == flase){
-            if(this.horsePosY < 550){
-                this.horsew.setVelocityY(50);
+        else if(this.horseDirY == 1){
+            if(this.horsePosY <= 550){
+                this.horsew.setVelocityY(this.horseVel);
                 this.horsePosY = this.horsePosY + 1;
             }
             else{
-                this.horsew.setVelocityY(-50);
-                this.horseDirY = false;
-                horse.play("horse-mov-up");
+                this.horsew.setVelocityY(-this.horseVel);
+                this.horseDirY = 0;
+                //horse.play("horse-mov-up");
+            }
+        }
+        */
+        if(horseD == 0){
+            if(this.horsePosY >= 50){
+                this.horsew.setVelocityY(-this.horseVel);
+                this.horsePosY = this.horsePosY - 1;
+            }else{
+                horseD = 1;
+            }
+        }
+        if(horseD == 1){
+            if(this.horsePosY <= 550){
+                this.horsew.setVelocityY(this.horseVel);
+                this.horsePosY = this.horsePosY + 1;
+            }else{
+                horseD = 0;
             }
         }
         
     }
 }
+
+
+
