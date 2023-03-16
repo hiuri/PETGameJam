@@ -16,6 +16,7 @@ export default class Scene_center extends Phaser.Scene{
 
     preload(){
         this.load.image("background", "./src/scenes/map1_center/img/map_center.jpg");
+        this.load.spritesheet("jorge","./src/img/jorge.png";)
     }
     
     create(){
