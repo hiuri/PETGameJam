@@ -11,8 +11,8 @@ export default class Scene_center extends Phaser.Scene{
         this.velocityJorge = 1;
         this.lifes = 1;
         this.dragonLifes = 10;
-        this.jorgeWidth = 48;
-        this.jorgeHeight = 64;
+        this.jorgeWidth = 150;
+        this.jorgeHeight = 150;
     }
 
 
@@ -69,7 +69,7 @@ export default class Scene_center extends Phaser.Scene{
     }
     
     update(){
-
+        //this.move();
     }
 
     move() {
