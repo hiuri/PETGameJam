@@ -10,9 +10,10 @@ export default class Scene_up extends Phaser.Scene{
       this.velocityJorge = 1;
       this.velocityFire = 4;
       this.lifes = 1;
+      this.dragonLifes = 10;
       this.fireGroup = this.physics.add.group();
       this.lastSpawned = 0;
-      this.spawnCooldown = 2000;
+      this.spawnCooldown = 500;
     }
 
     preload(){
@@ -80,8 +81,13 @@ export default class Scene_up extends Phaser.Scene{
         });
 
 
-
+        //Textos do game
         this.lifesText = this.add.text(10,40, `Vidas: ${this.lifes}`,{
+          fontSize: 20,
+          color: "#fff",
+        });
+
+        this.dragonLifesText = this.add.text(620,40, `HP Dragão: ${this.dragonLifes}`,{
           fontSize: 20,
           color: "#fff",
         });
@@ -108,9 +114,9 @@ export default class Scene_up extends Phaser.Scene{
         "fire"
       );
       this.fireGroup.children.iterate((child) => {
-        child.setScale(0.8);
+        child.setScale(1);
         child.play("fire_idle");
-        child.setVelocityY(100);
+        child.setVelocityY(150);
       });
   
       // removendo os inimigos que passaram para fora da tela e não foram mortos
