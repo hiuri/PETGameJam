@@ -55,8 +55,58 @@ export default class Scene_left extends Phaser.Scene{
     }
 
     update(){
-        /*
-        //horse.play("horse-mov-up");
+//algoritimo para deixar o cavalo subindo e descendo
+/*if(this.horseDirY == 0){
+    if(this.horsePosY >= 20){
+        this.horsew.setVelocityY(-50);
+        this.horsePosY = this.horsePosY - 1;
+    }
+    else{
+        this.horsew.setVelocityY(50);
+        this.horseDirY = 1;
+        horse.play("horse-mov-down");
+    }
+}
+else if(this.horseDirY == 1){
+    if(this.horsePosY <= 580){
+        this.horsew.setVelocityY(50);
+        this.horsePosY = this.horsePosY + 1;
+    }
+    else{
+        this.horsew.se1if(this.horsePosY <= 550){
+                this.horsew.setVelocityY(this.horseVel);
+                this.horsePosY = this.horsePosY + 1;
+            }tVelocityY(-50);
+        this.horseDirY = 0;
+        horse.play("horse-mov-up");
+    }
+}        /*
+//algoritimo para deixar o cavalo subindo e descendo
+/*if(this.horseDirY == 0){
+    if(this.horsePosY >= 20){
+        this.horsew.setVelocityY(-50);
+        this.horsePosY = this.horsePosY - 1;
+    }
+    else{
+        this.horsew.setVelocityY(50);
+        this.horseDirY = 1;
+        horse.play("horse-mov-down");
+    }
+}
+else if(this.horseDirY == 1){
+    if(this.horsePosY <= 580){
+        this.horsew.setVelocityY(50);
+        this.horsePosY = this.horsePosY + 1;
+    }
+    else{
+        this.horsew.se1if(this.horsePosY <= 550){
+                this.horsew.setVelocityY(this.horseVel);
+                this.horsePosY = this.horsePosY + 1;
+            }tVelocityY(-50);
+        this.horseDirY = 0;
+        horse.play("horse-mov-up");
+    }
+}        //horse.play("horse-mov-up");
         if(this.horseDirY == 0){
             //horse.play("horse-mov-up");
             if(this.horsePosY >= 50){
@@ -101,28 +151,5 @@ export default class Scene_left extends Phaser.Scene{
     }
 }
 
-//algoritimo para deixar o cavalo subindo e descendo
-/*if(this.horseDirY == 0){
-    if(this.horsePosY >= 20){
-        this.horsew.setVelocityY(-50);
-        this.horsePosY = this.horsePosY - 1;
-    }
-    else{
-        this.horsew.setVelocityY(50);
-        this.horseDirY = 1;
-        horse.play("horse-mov-down");
-    }
-}
-else if(this.horseDirY == 1){
-    if(this.horsePosY <= 580){
-        this.horsew.setVelocityY(50);
-        this.horsePosY = this.horsePosY + 1;
-    }
-    else{
-        this.horsew.setVelocityY(-50);
-        this.horseDirY = 0;
-        horse.play("horse-mov-up");
-    }
-}
 
-}*/
+
