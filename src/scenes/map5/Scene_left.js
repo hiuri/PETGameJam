@@ -5,6 +5,17 @@ export default class Scene_left extends Phaser.Scene{
         super('scene_left');
     }
 
+    init(){
+        this.velocityJorge = 1;
+        this.lifes = 1;
+        this.dragonLifes = 10;
+        this.jorgeWidth = 48;
+        this.jorgeHeight = 64;
+        this.horsePosX = 100;
+        this.horsePosY = 300;
+        this.horseDirY = true;//true é up, false é down
+    }
+
     preload(){
         this.load.image("background", "./src/scenes/map5/img/map_left.jpg")
         this.load.spritesheet("horse", "./src/scenes/map5/img/horse-white.png",{
@@ -42,14 +53,32 @@ export default class Scene_left extends Phaser.Scene{
         this.horsew.children.iterate((horse)=>{
             horse.play("horse-mov-up")
         });
-
-     
-
-
+        //this.horsew.setVelocityY(-50)
     }
 
     update(){
-        //Velocidade do cavalo
-        this.horsew.setVelocityY(-15);
+        if(this.horseDirY == true){
+            if(this.horsePosY >= 20){
+                this.horsew.setVelocityY(-50);
+                this.horsePosY = this.horsePosY - 1;
+            }
+            else{
+                this.horsew.setVelocityY(50);
+                this.horseDirY = false;
+                horse.play("horse-mov-down");
+            }
+        }
+        else if(this.horseDirY == flase){
+            if(this.horsePosY < 550){
+                this.horsew.setVelocityY(50);
+                this.horsePosY = this.horsePosY + 1;
+            }
+            else{
+                this.horsew.setVelocityY(-50);
+                this.horseDirY = false;
+                horse.play("horse-mov-up");
+            }
+        }
+        
     }
 }
