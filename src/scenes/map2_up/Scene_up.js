@@ -71,8 +71,6 @@ export default class Scene_up extends Phaser.Scene{
 
 
         //adicionando fogo no mapa
-      
-
         this.anims.create({
             key: "fire_idle",
             frames: this.anims.generateFrameNumbers("fire", {start:0, end:2}),
