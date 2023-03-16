@@ -7,13 +7,13 @@ export default class Scene_center extends Phaser.Scene{
     }
 
     preload(){
-        this.load.image("background", "./map1_center/img/map_center.jpg");
+        this.load.image("background", "./src/scenes/map1_center/img/map_center.jpg");
     }
     
     create(){
     
         // adicionando o background
-        this.background = this.add.tileSprite(200,200,200,200,"background");
+        this.background = this.add.tileSprite(400,300,800,600,"background");
     }
     
     update(){
