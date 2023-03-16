@@ -24,28 +24,32 @@ export default class Scene_left extends Phaser.Scene{
         ).setScale(1)
 
         this.anims.create({
-            key: "horse-mov",
+            key: "horse-mov-up",
             frames: this.anims.generateFrameNumbers("horse", {start:0, end:3}),
             frameRate: 6,
-            repeat: -1
+            repeat: -1,
+            //this.horsew.setVelocityY(-15)
+        });
+
+        this.anims.create({
+            key: "horse-mov-down",
+            frames: this.anims.generateFrameNumbers("horse", {start:8, end:11}),
+            frameRate: 6,
+            repeat: -1,
+            //this.horsew.setVelocityY(15)
         });
 
         this.horsew.children.iterate((horse)=>{
-            horse.play("horse-mov")
+            horse.play("horse-mov-up")
         });
 
-        //Propriedades fisicas do cavalo
-        this.horsew.setVelocityY(-1);
+     
 
-        const points = [
-            { x: 200, y: 300 },
-            { x: 400, y: 300 },
-            { x: 400, y: 500 },
-            { x: 200, y: 500 },
-        ];
 
-        let currentPintIndex = 0;
+    }
 
-        
+    update(){
+        //Velocidade do cavalo
+        this.horsew.setVelocityY(-15);
     }
 }
