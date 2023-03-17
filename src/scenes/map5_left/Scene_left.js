@@ -95,9 +95,9 @@ export default class Scene_left extends Phaser.Scene{
             this.horsePosY = this.horsePosY - 1;
         }
         //Cavalo desce
-        else if(this.horsePosY <=500 && this.horsePosX >= 400){
+        else if(this.horsePosY <=500 && this.horsePosX >= 350){
             this.horsew.setVelocity(0, 75);
-            this.horsePosX = this.horsePosX + 1;
+            this.horsePosY = this.horsePosY + 1;
         }
         //Cavalo esquerda
         else if(this.horsePosX >=100 && this.horsePosY <= 100){
@@ -105,7 +105,7 @@ export default class Scene_left extends Phaser.Scene{
             this.horsePosX = this.horsePosX + 1;
         }
         //Cavalo direita
-        else if(this.horsePosX <=400 && this.horsePosY >= 500){
+        else if(this.horsePosX <=350 && this.horsePosY >= 500){
             this.horsew.setVelocity(-75, 0);
             this.horsePosX = this.horsePosX - 1;
         }
