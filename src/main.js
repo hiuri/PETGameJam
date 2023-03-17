@@ -9,7 +9,7 @@ export default new Phaser.Game({
     type: Phaser.AUTO,
     width: 800,
     height: 600,
-    scene: [Scene_up, ],
+    scene: [Scene_left, ],
     physics: {
         default: 'arcade',
         arcade: {
