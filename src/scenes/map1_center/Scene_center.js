@@ -89,29 +89,4 @@ export default class Scene_center extends Phaser.Scene{
 
     };
 
-    /*
-    move() {
-        if (this.keys.left.isDown && this.jorge.x > 48 / 2) {
-          this.jorge.setVelocityX(-200);
-        } else if (
-          this.keys.right.isDown &&
-          this.jorge.x < this.scale.width - 48 / 2
-        ) {
-          this.jorge.setVelocityX(200);
-        } else {
-          this.jorge.setVelocityX(0);
-        }
-    
-        if (this.keys.up.isDown && this.jorge.y > 64 / 2) {
-          this.jorge.setVelocityY(-200);
-        } else if (
-          this.keys.down.isDown &&
-          this.jorge.y < this.scale.height - 64 / 2
-        ) {
-          this.jorge.setVelocityY(200);
-        } else {
-          this.jorge.setVelocityY(0);
-        }
-      }
-      */
 }
