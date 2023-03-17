@@ -29,7 +29,7 @@ export default class Scene_left extends Phaser.Scene{
         //adicionando o BAU no mapa
         this.sbau = this.physics.add.group()
         this.sbau.create(
-            500,300, "horse"
+            700,300, "bau"
         ).setScale(1)
 
     }
