@@ -19,8 +19,8 @@ export default class Scene_left extends Phaser.Scene{
     }
 
     preload(){
-        this.load.image("background", "./src/scenes/map5/img/map_left.jpg")
-        this.load.spritesheet("horse", "./src/scenes/map5/img/horse-white.png",{
+        this.load.image("background", "./src/scenes/map5_left/img/map_left.jpg")
+        this.load.spritesheet("horse", "./src/scenes/map5_left/img/horse-white.png",{
             frameWidth: 128,
             frameHeight: 128,
         });
