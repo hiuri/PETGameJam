@@ -59,6 +59,13 @@ export default class Scene_left extends Phaser.Scene{
     }
 
     update(){
+
+       
+    }
+}
+
+//CODIGOS DUVIDOSOS
+
 //algoritimo para deixar o cavalo subindo e descendo
 /*
 if(this.horseDirY == 0){
@@ -153,9 +160,5 @@ else if(this.horseDirY == 1){
             }
         }
         */
-       
-    }
-}
-
 
 
