@@ -13,6 +13,8 @@ export default class Scene_center extends Phaser.Scene{
         this.dragonLifes = 10;
         this.jorgeWidth = 150;
         this.jorgeHeight = 150;
+        this.velocityJorge = 50;
+        this.bonusVelocity = 1;
     }
 
 
@@ -35,16 +37,19 @@ export default class Scene_center extends Phaser.Scene{
         // adicionando o background
         this.background = this.add.tileSprite(400,300,800,600,"background");
 
-        /*
-        this.jorge = this.physics.add.sprite(width / 2, height - 50, "jorge");
-        this.jorge.setScale(0.1)
-        */
         
-        this.jorges = this.physics.add.group()
+        this.jorge = this.physics.add.sprite(300, 300, "jorge");
+        this.jorge.setScale(1)
+        this.jorge.setCollideWorldBounds(true)
+        
+        
+        /*this.jorges = this.physics.add.group()
         this.jorges.create(
             385,199, "jorge"
         ).setScale(0.8)
-            
+           
+        */
+
         this.anims.create({
             key: "jorge_idle",
             frames: this.anims.generateFrameNumbers("jorge", {start:0, end:2}),
@@ -52,26 +57,39 @@ export default class Scene_center extends Phaser.Scene{
             repeat:-1
         });
 
-        this.jorges.children.iterate((jorge)=>{
+        
+        /*
+        this.jorge.children.iterate((jorge)=>{
             jorge.play("jorge_idle")
-        })
+        });
+        */
+        
 
         //Textos do game
         this.lifesText = this.add.text(10,40, `Vidas: ${this.lifes}`,{
             fontSize: 20,
             color: "#fff",
-          });
+        });
   
           this.dragonLifesText = this.add.text(620,40, `HP Dragão: ${this.dragonLifes}`,{
             fontSize: 20,
             color: "#fff",
-          });
+        });
     }
     
     update(){
-        //this.move();
-    }
 
+        if(this.keys.left.isDown)           this.jorge.setVelocityX(-this.velocityJorge * this.bonusVelocity);
+        else if(this.keys.right.isDown)     this.jorge.setVelocityX(this.velocityJorge * this.bonusVelocity);
+        else                                this.jorge.setVelocityX(0);
+
+        if(this.keys.up.isDown)             this.jorge.setVelocityY(-this.velocityJorge * this.bonusVelocity);
+        else if(this.keys.down.isDown)      this.jorge.setVelocityY(this.velocityJorge * this.bonusVelocity);
+        else                                this.jorge.setVelocityY(0);
+
+    };
+
+    /*
     move() {
         if (this.keys.left.isDown && this.jorge.x > 48 / 2) {
           this.jorge.setVelocityX(-200);
@@ -95,4 +113,5 @@ export default class Scene_center extends Phaser.Scene{
           this.jorge.setVelocityY(0);
         }
       }
+      */
 }
