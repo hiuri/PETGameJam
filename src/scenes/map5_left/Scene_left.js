@@ -20,13 +20,7 @@ export default class Scene_left extends Phaser.Scene{
 
     preload(){
         this.load.image("background", "./src/scenes/map5_left/img/map_left.jpg")
-        //Jorge em cima do cavalo
-        this.load.spritesheet("jorse", "./src/scenes/map5_left/img/horse-and-jorge.png",{
-            frameWidth: 125,
-            frameHeight: 125,
-        });
-        //Cavalo Apenas
-        this.load.spritesheet("horse", "./src/scenes/map5_left/img/horse-white.png",{
+        this.load.spritesheet("horse", "./src/scenes/map5_left/img/horse-and-jorge.png",{
             frameWidth: 125,
             frameHeight: 125,
         });
@@ -46,7 +40,7 @@ export default class Scene_left extends Phaser.Scene{
         //Animação do cavalo subindo
         this.anims.create({
             key: "horse-mov-up",
-            frames: this.anims.generateFrameNumbers("horse", {start:0, end:3}),
+            frames: this.anims.generateFrameNumbers("horse", {start:0, end:2}),
             frameRate: 6,
             repeat: -1,
         });
