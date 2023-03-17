@@ -86,9 +86,31 @@ export default class Scene_left extends Phaser.Scene{
 
     }
 
-    update(){/*
+    update(){
         //O Cavalo anda sempre fazendo curvas para a direita, assim formando o desenho de um retangulo
 
+        //Cavalo sobe 
+        if(this.horsePosY >=100 && this.horsePosX <= 100){
+            this.horsew.setVelocity(0, -75);
+            this.horsePosY = this.horsePosY - 1;
+        }
+        //Cavalo desce
+        else if(this.horsePosY <=500 && this.horsePosX >= 400){
+            this.horsew.setVelocity(0, 75);
+            this.horsePosX = this.horsePosX + 1;
+        }
+        //Cavalo esquerda
+        else if(this.horsePosX >=100 && this.horsePosY <= 100){
+            this.horsew.setVelocity(75, 0);
+            this.horsePosX = this.horsePosX + 1;
+        }
+        //Cavalo direita
+        else if(this.horsePosX <=400 && this.horsePosY >= 500){
+            this.horsew.setVelocity(-75, 0);
+            this.horsePosX = this.horsePosX - 1;
+        }
+
+        /*
         if(horseD == 0){//O Cavalo está subindo
             if(this.horsePosY >= 50){
                 this.horsew.setVelocityY(-this.horseVel);
