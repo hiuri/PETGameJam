@@ -13,14 +13,18 @@ export default class Scene_left extends Phaser.Scene{
         this.jorgeHeight = 64;
         this.horsePosX = 100;
         this.horsePosY = 300;
-        this.horseDirY = 0;//0 é up, 1 é down
+        //this.horseDirY = 0;//0 é up, 1 é down
         this.horseVel = 75
         this.horseD = 0;
     }
 
     preload(){
         this.load.image("background", "./src/scenes/map5_left/img/map_left.jpg")
-        this.load.spritesheet("horse", "./src/scenes/map5_left/img/horse-and-jorge.png",{
+        this.load.spritesheet("jorse", "./src/scenes/map5_left/img/horse-and-jorge.png",{
+            frameWidth: 125,
+            frameHeight: 125,
+        });
+        this.load.spritesheet("horse", "./src/scenes/map5_left/img/horse-white.png",{
             frameWidth: 125,
             frameHeight: 125,
         });
@@ -40,7 +44,7 @@ export default class Scene_left extends Phaser.Scene{
         //Animação do cavalo subindo
         this.anims.create({
             key: "horse-mov-up",
-            frames: this.anims.generateFrameNumbers("horse", {start:0, end:2}),
+            frames: this.anims.generateFrameNumbers("horse", {start:0, end:3}),
             frameRate: 6,
             repeat: -1,
         });
@@ -82,10 +86,44 @@ export default class Scene_left extends Phaser.Scene{
 
     }
 
-    update(){
+    update(){/*
+        //O Cavalo anda sempre fazendo curvas para a direita, assim formando o desenho de um retangulo
 
-       
+        if(horseD == 0){//O Cavalo está subindo
+            if(this.horsePosY >= 50){
+                this.horsew.setVelocityY(-this.horseVel);
+                this.horsePosY = this.horsePosY - 1;
+            }else{
+                horseD = 1;
+            }
+        }
+        if(horseD == 1){//O Cavalo está indo para a direita
+            if(this.horsePosX <= 400){
+                this.horsew.setVelocityX(this.horseVel);
+                this.horsePosX = this.horsePosY + 1;
+            }else{
+                horseD = 2;
+            }
+        }
+        if(horseD == 2){//O Cavalo está descendo
+            if(this.horsePosY <= 550){
+                this.horsew.setVelocityY(this.horseVel);
+                this.horsePosY = this.horsePosY + 1;
+            }else{
+                horseD = 3;
+            }
+        }
+        if(horseD == 3){//O Cavalo está indo para a esquerda
+            if(this.horsePosX <= 50){
+                this.horsew.setVelocityX(-this.horseVel);
+                this.horsePosX = this.horsePosY - 1;
+            }else{
+                horseD = 0;
+            }
+        }
+        */
     }
+
 }
 
 //CODIGOS DUVIDOSOS
