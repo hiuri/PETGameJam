@@ -20,9 +20,9 @@ export default class Scene_left extends Phaser.Scene{
 
     preload(){
         this.load.image("background", "./src/scenes/map5_left/img/map_left.jpg")
-        this.load.spritesheet("horse", "./src/scenes/map5_left/img/horse-white.png",{
-            frameWidth: 128,
-            frameHeight: 128,
+        this.load.spritesheet("horse", "./src/scenes/map5_left/img/horse-and-jorge.png",{
+            frameWidth: 125,
+            frameHeight: 125,
         });
     }
 
@@ -38,7 +38,7 @@ export default class Scene_left extends Phaser.Scene{
 
         this.anims.create({
             key: "horse-mov-up",
-            frames: this.anims.generateFrameNumbers("horse", {start:0, end:3}),
+            frames: this.anims.generateFrameNumbers("horse", {start:0, end:2}),
             frameRate: 6,
             repeat: -1,
             //this.horsew.setVelocityY(-15)
@@ -52,11 +52,16 @@ export default class Scene_left extends Phaser.Scene{
             //this.horsew.setVelocityY(15)
         });
 
+        this.horsew.children.iterate((horse)=>{
+            horse.play("horse-mov-up")
+        })
+
     }
 
     update(){
 //algoritimo para deixar o cavalo subindo e descendo
-/*if(this.horseDirY == 0){
+/*
+if(this.horseDirY == 0){
     if(this.horsePosY >= 20){
         this.horsew.setVelocityY(-50);
         this.horsePosY = this.horsePosY - 1;
@@ -80,7 +85,7 @@ else if(this.horseDirY == 1){
         this.horseDirY = 0;
         horse.play("horse-mov-up");
     }
-}        /*
+}        
 //algoritimo para deixar o cavalo subindo e descendo
 /*if(this.horseDirY == 0){
     if(this.horsePosY >= 20){
@@ -130,7 +135,7 @@ else if(this.horseDirY == 1){
                 //horse.play("horse-mov-up");
             }
         }
-        */
+        
         if(horseD == 0){
             if(this.horsePosY >= 50){
                 this.horsew.setVelocityY(-this.horseVel);
@@ -147,7 +152,8 @@ else if(this.horseDirY == 1){
                 horseD = 0;
             }
         }
-        
+        */
+       
     }
 }
 

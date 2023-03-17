@@ -14,6 +14,8 @@ export default class Scene_up extends Phaser.Scene{
       this.fireGroup = this.physics.add.group();
       this.lastSpawned = 0;
       this.spawnCooldown = 500;
+      this.dragonFly = 0;
+      this.dragonPos = 380;
     }
 
     preload(){
@@ -44,11 +46,11 @@ export default class Scene_up extends Phaser.Scene{
         this.dragons = this.physics.add.group()
         this.dragons.create(
             380,100, "dragon"
-        ).setScale(0.5)
-        this.dragons.create(
+        ).setScale(1.2)
+        /*this.dragons.create(
             380,100, "dragondead"
         ).setScale(1.2)
-        
+        */
 
         this.anims.create({
             key: "dragon_idle",
@@ -64,11 +66,12 @@ export default class Scene_up extends Phaser.Scene{
             repeat:-1
         });
 
-
+        
         this.dragons.children.iterate((dragon)=>{
             dragon.play("dragon_idle")
+            //dragon.setVelocityX(-40);
         })
-
+        
 
         //adicionando fogo no mapa
         this.anims.create({
@@ -93,12 +96,35 @@ export default class Scene_up extends Phaser.Scene{
         
     }
     
+  
+
     update(){
       // adicionando as bolas de fogo
       if (this.time.now > this.lastSpawned) {
         this.createFire();
         this.lastSpawned = this.time.now + this.spawnCooldown;
       }
+      
+    
+
+      /*this.dragons.children.iterate((dragon)=>{
+        //dragon.play("dragon_idle")
+        if(this.dragonFly == 0){
+            dragon.setVelocityX(40);
+            this.dragonPos = this.dragonPos +1;
+            if(this.dragonPos >=400){
+              this.dragonFly = 1;
+            }
+        }else if(this.dragonFly == 1){
+            dragon.setVelocityX(-40);
+            this.dragonPos = this.dragonPos -1;
+            if(this.dragonPos <=330){
+              this.dragonFly = 0;
+            }
+        }*/
+      //})
+      //movendo o dragao
+      //this.dragon.setVelocityY(-10);
     }
 
     updateLife(){
@@ -116,11 +142,7 @@ export default class Scene_up extends Phaser.Scene{
         child.play("fire_idle");
         child.setVelocityY(150);
       });
-  
-      // removendo os inimigos que passaram para fora da tela e não foram mortos
-      this.fireGroup.children.iterate((child) => {
-        if (child && child.body.y > this.scale.height) child.destroy();
-      });
     }
+
   
 }
