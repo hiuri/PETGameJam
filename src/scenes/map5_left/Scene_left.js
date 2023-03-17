@@ -77,7 +77,7 @@ export default class Scene_left extends Phaser.Scene{
 
 
         this.horsew.children.iterate((horse)=>{
-            horse.play("jorse-mov-up")
+            horse.play("horse-mov-up")
         })
 
     }
