@@ -20,8 +20,8 @@ export default class Scene_left extends Phaser.Scene{
 
     preload(){
         this.load.image("background", "./src/scenes/map5_left/img/map_left.jpg")
-        this.load.spritesheet("horse", "./src/scenes/map5_left/img/horse-jorge.png",{
-            frameWidth: 126,
+        this.load.spritesheet("horse", "./src/scenes/map5_left/img/horse-and-jorge.png",{
+            frameWidth: 125,
             frameHeight: 125,
         });
     }
@@ -35,30 +35,61 @@ export default class Scene_left extends Phaser.Scene{
         this.horsew.create(
             100,300, "horse"
         ).setScale(1)
+        
 
+        //Animação do cavalo subindo
         this.anims.create({
             key: "horse-mov-up",
-            frames: this.anims.generateFrameNumbers("horse", {start:0, end:3}),
-            frameRate: 8,
+            frames: this.anims.generateFrameNumbers("horse", {start:0, end:2}),
+            frameRate: 6,
             repeat: -1,
-            //this.horsew.setVelocityY(-15)
         });
 
+        //Animação do cavalo descendo
         this.anims.create({
             key: "horse-mov-down",
             frames: this.anims.generateFrameNumbers("horse", {start:8, end:11}),
             frameRate: 6,
             repeat: -1,
-            //this.horsew.setVelocityY(15)
         });
 
+        //Animação do cavalo indo para a esquerda
+        this.anims.create({
+            key: "horse-mov-left",
+            frames: this.anims.generateFrameNumbers("horse", {start:4, end:7}),
+            frameRate: 6,
+            repeat: -1,
+        });
+        //Animação do cavalo indo para a direita
+        this.anims.create({
+            key: "horse-mov-right",
+            frames: this.anims.generateFrameNumbers("horse", {start:12, end:15}),
+            frameRate: 6,
+            repeat: -1,
+        });
+        //Animação do Jorvalo subindo
+        this.anims.create({
+            key: "jorse-mov-up",
+            frames: this.anims.generateFrameNumbers("jorse", {start:0, end:2}),
+            frameRate: 6,
+            repeat: -1,
+        });
+
+
         this.horsew.children.iterate((horse)=>{
-            horse.play("horse-mov-up")
+            horse.play("jorse-mov-up")
         })
 
     }
 
     update(){
+
+       
+    }
+}
+
+//CODIGOS DUVIDOSOS
+
 //algoritimo para deixar o cavalo subindo e descendo
 /*
 if(this.horseDirY == 0){
@@ -153,9 +184,5 @@ else if(this.horseDirY == 1){
             }
         }
         */
-       
-    }
-}
-
 
 
